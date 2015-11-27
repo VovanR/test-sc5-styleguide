@@ -76,6 +76,10 @@ p {
 .eg-input:focus {
   color: blue;
 }
+.eg-input.eg-input_block {
+  width: 100%;
+  display: block;
+}
 
 .eg-button {
   display: inline-block;
@@ -94,6 +98,66 @@ p {
 .eg-button.eg-button_size_big {
   font-size: 200%;
   border-width: thick;
+}
+.eg-button.eg-button_block {
+  display: block;
+  width: 100%;
+}
+
+.togglable {
+  display: block;
+}
+
+.togglable__content {
+  display: block;
+}
+
+.togglable__toggler {
+  display: none;
+  overflow: hidden;
+  text-decoration: none;
+}
+.togglable__toggler:hover {
+  text-decoration: none;
+}
+
+.togglable__toggler-caret {
+  -moz-transition: -moz-transform 0.15s ease;
+  -o-transition: -o-transform 0.15s ease;
+  -webkit-transition: -webkit-transform 0.15s ease;
+  transition: transform 0.15s ease;
+  cursor: pointer;
+  display: block;
+  float: left;
+  width: 5px;
+  height: 4px;
+  margin-top: 6px;
+  margin-right: 12px;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAYAAABGM/VAAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wsbDRsMdyzxNwAAADBJREFUCNdNykENACEUxNC3AXsrAGx+KQgaTgR6appymUfaEwY+rP6EH3XugiSSQG3afAr84cDRKAAAAABJRU5ErkJggg==");
+}
+
+.togglable__toggler-text {
+  max-width: 93%;
+  cursor: pointer;
+  display: block;
+  float: left;
+  border-bottom: dotted 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.togglable_js_inited .togglable__toggler {
+  display: block;
+}
+.togglable_js_inited.togglable_closed .togglable__content {
+  display: none;
+}
+.togglable_js_inited.togglable_closed .togglable__toggler-caret {
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .sg-wrapper .styleguide-placeholder {
