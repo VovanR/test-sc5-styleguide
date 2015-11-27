@@ -1,18 +1,19 @@
 {
-  "name": "sc5-styleguide-tutorial",
+  "name": "test-sc5-styleguide",
   "version": "0.0.0",
-  "description": "SC5 Styleguide Tutorial",
+  "description": "Test",
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-compass": "^2.1.0",
+    "gulp-gh-pages": "^0.5.4",
     "sc5-styleguide": "^0.3.40"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SC5/sc5-styleguide-tutorial.git"
+    "url": "https://github.com/VovanR/test-sc5-styleguide.git"
   },
-  "author": "SC5",
+  "author": "VovanR",
   "bugs": {
-    "url": "https://github.com/SC5/sc5-styleguide-tutorial/issues"
+    "url": "https://github.com/VovanR/test-sc5-styleguide/issues"
   }
 }

@@ -1,6 +1,7 @@
 // Imports
 
 var gulp = require('gulp');
+var ghPages = require('gulp-gh-pages');
 var compass = require('gulp-compass');
 var styleguide = require('sc5-styleguide');
 
@@ -80,6 +81,12 @@ gulp.task('staticStyleguide:applystyles', function () {
 });
 
 gulp.task('staticStyleguide', ['staticStyleguide:generate', 'staticStyleguide:applystyles']);
+
+// Deploy
+gulp.task('deploy', function () {
+	return gulp.src(buildPath + '/**/*')
+		.pipe(ghPages());
+});
 
 // Running styleguide development server to view the styles while you are working on them
 //
