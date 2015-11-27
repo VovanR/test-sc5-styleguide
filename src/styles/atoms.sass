@@ -238,8 +238,8 @@
         color: blue
 
     &.eg-input_block
-        display: block
         width: 100%
+        display: block
 
 // Push Button Atom
 //
@@ -272,3 +272,72 @@
     &.eg-button_block
         display: block
         width: 100%
+
+// Togglable
+//
+// A togglable.
+//
+// default - the interactive default state
+// .togglable_js_inited - the state when js inited
+// .togglable_js_inited.togglable_closed - the state when togglable closed
+//
+// markup:
+// <div class="togglable {$modifiers}">
+//     <div class="togglable__content">
+//         Togglable content
+//     </div>
+//     <a class="togglable__toggler" href="#">
+//         <i class="togglable__toggler-caret"></i>
+//         <span class="togglable__toggler-text">Toggler text</span>
+//     </a>
+// </div>
+//
+// Styleguide 1.7
+
+.togglable
+    display: block
+
+.togglable__content
+    display: block
+
+.togglable__toggler
+    display: none
+    overflow: hidden
+    text-decoration: none
+
+    &:hover
+        text-decoration: none
+
+.togglable__toggler-caret
+    +transition(transform ease 0.15s)
+    cursor: pointer
+    display: block
+    float: left
+    width: 5px
+    height: 4px
+    margin-top: 6px
+    margin-right: 12px
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAYAAABGM/VAAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wsbDRsMdyzxNwAAADBJREFUCNdNykENACEUxNC3AXsrAGx+KQgaTgR6appymUfaEwY+rP6EH3XugiSSQG3afAr84cDRKAAAAABJRU5ErkJggg==")
+    // background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAECAYAAABGM/VAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBJREFUeNpiYmBg2AzEDP///wdjEJ8JSCwHMRgZGRmAeDOUDwZRUB1RDGgALgAQYADM4gvgXqquTgAAAABJRU5ErkJggg==")
+
+.togglable__toggler-text
+    max-width: 93%
+    cursor: pointer
+    display: block
+    float: left
+    border-bottom: dotted 1px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+.togglable_js_inited
+    .togglable__toggler
+        display: block
+
+    &.togglable_closed
+        .togglable__content
+            display: none
+
+        .togglable__toggler-caret
+            +rotate(180deg)
+
