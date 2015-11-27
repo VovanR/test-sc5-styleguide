@@ -1,0 +1,11 @@
+.eg-input.pseudo-class-focus {
+  color: blue;
+}
+
+.eg-button.pseudo-class-hover {
+  color: blue;
+}
+
+.togglable__toggler.pseudo-class-hover {
+  text-decoration: none;
+}
