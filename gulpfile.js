@@ -15,7 +15,7 @@ var overviewPath = styleSourcePath + '/README.md';
 
 var buildPath = 'build';
 var styleBuildPath = buildPath + '/styles';
-var styleguideAppRoot = '/styleguide';
+var styleguideAppRoot = '/test-sc5-styleguide/styleguide';
 var styleguideBuildPath = buildPath + styleguideAppRoot;
 
 var tmpPath = 'tmp';
