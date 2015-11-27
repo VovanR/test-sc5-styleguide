@@ -15,5 +15,8 @@
   "author": "VovanR",
   "bugs": {
     "url": "https://github.com/VovanR/test-sc5-styleguide/issues"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.34"
   }
 }
