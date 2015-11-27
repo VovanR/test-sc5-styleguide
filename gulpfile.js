@@ -16,7 +16,7 @@ var overviewPath = styleSourcePath + '/README.md';
 
 var buildPath = 'build';
 var styleBuildPath = buildPath + '/styles';
-var styleguideAppRoot = '/test-sc5-styleguide/styleguide';
+var styleguideAppRoot = '/styleguide';
 var styleguideBuildPath = buildPath + styleguideAppRoot;
 
 var tmpPath = 'tmp';
@@ -59,7 +59,7 @@ gulp.task('staticStyleguide:generate', function () {
 		.pipe(styleguide.generate({
 			title: 'My First Hosted Styleguide',
 			rootPath: styleguideBuildPath,
-			appRoot: styleguideAppRoot,
+			appRoot: '/test-sc5-styleguide' + styleguideAppRoot,
 			overviewPath: overviewPath
 		}))
 		.pipe(gulp.dest(styleguideBuildPath));
