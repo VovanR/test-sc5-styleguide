@@ -30,17 +30,18 @@ var styleguideTmpPath = tmpPath + '/styleguide';
 // that would bring the markup for a page into the app from the pages
 // section in the styleguide.
 
-gulp.task('html', function() {
-    return gulp.src(htmlWild)
-        .pipe(gulp.dest(buildPath));
+gulp.task('html', function () {
+	return gulp.src(htmlWild)
+		.pipe(gulp.dest(buildPath));
 });
 
-gulp.task('sass', function() {
-    return gulp.src(sassRoot)
-        .pipe(compass({
-            sass: styleSourcePath
-        }))
-        .pipe(gulp.dest(styleBuildPath));
+gulp.task('sass', function () {
+	return gulp.src(sassRoot)
+		.pipe(compass({
+			css: styleBuildPath,
+			sass: styleSourcePath
+		}))
+		.pipe(gulp.dest(styleBuildPath));
 });
 
 // Building styleguide for static hosting to be displayed as a part of the application
@@ -52,29 +53,30 @@ gulp.task('sass', function() {
 // All interactive features are disabled to prevent users from tampering with the
 // styles.
 
-gulp.task('staticStyleguide:generate', function() {
-  return gulp.src(sassWild)
-    .pipe(styleguide.generate({
-        title: 'My First Hosted Styleguide',
-        rootPath: styleguideBuildPath,
-        appRoot: styleguideAppRoot,
-        overviewPath: overviewPath
-      }))
-    .pipe(gulp.dest(styleguideBuildPath));
+gulp.task('staticStyleguide:generate', function () {
+	return gulp.src(sassWild)
+		.pipe(styleguide.generate({
+			title: 'My First Hosted Styleguide',
+			rootPath: styleguideBuildPath,
+			appRoot: styleguideAppRoot,
+			overviewPath: overviewPath
+		}))
+		.pipe(gulp.dest(styleguideBuildPath));
 });
 
-gulp.task('staticStyleguide:applystyles', function() {
-  return gulp.src(sassRoot)
-    .pipe(compass({
-        sass: styleSourcePath
-    }))
-    .on('error', function(error) {
-      // Would like to catch the error here 
-      console.log(error);
-      this.emit('end');
-    })
-    .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest(styleguideBuildPath));
+gulp.task('staticStyleguide:applystyles', function () {
+	return gulp.src(sassRoot)
+		.pipe(compass({
+			css: styleBuildPath,
+			sass: styleSourcePath
+		}))
+		.on('error', function (error) {
+			// Would like to catch the error here
+			console.log(error);
+			this.emit('end');
+		})
+		.pipe(styleguide.applyStyles())
+		.pipe(gulp.dest(styleguideBuildPath));
 });
 
 gulp.task('staticStyleguide', ['staticStyleguide:generate', 'staticStyleguide:applystyles']);
@@ -85,53 +87,53 @@ gulp.task('staticStyleguide', ['staticStyleguide:generate', 'staticStyleguide:ap
 // and contains all the interactive features and should be updated automatically whenever the
 // styles are modified.
 
-gulp.task('styleguide:generate', function() {
-  return gulp.src(sassWild)
-    .pipe(styleguide.generate({
-        title: 'My First Development Styleguide',
-        server: true,
-        rootPath: styleguideTmpPath,
-        overviewPath: overviewPath
-      }))
-    .pipe(gulp.dest(styleguideTmpPath));
+gulp.task('styleguide:generate', function () {
+	return gulp.src(sassWild)
+		.pipe(styleguide.generate({
+			title: 'My First Development Styleguide',
+			server: true,
+			rootPath: styleguideTmpPath,
+			overviewPath: overviewPath
+		}))
+		.pipe(gulp.dest(styleguideTmpPath));
 });
 
-gulp.task('styleguide:applystyles', function() {
-  return gulp.src(sassRoot)
-    .pipe(compass({
-        sass: styleSourcePath
-    }))
-    .on('error', function(error) {
-      // Would like to catch the error here 
-      console.log(error);
-      this.emit('end');
-    })
-    .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest(styleguideTmpPath));
+gulp.task('styleguide:applystyles', function () {
+	return gulp.src(sassRoot)
+		.pipe(compass({
+			css: styleBuildPath,
+			sass: styleSourcePath
+		}))
+		.on('error', function (error) {
+			// Would like to catch the error here
+			console.log(error);
+			this.emit('end');
+		})
+		.pipe(styleguide.applyStyles())
+		.pipe(gulp.dest(styleguideTmpPath));
 });
 
 gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 
 // Developer mode
 
-gulp.task('dev', ['html', 'sass', 'styleguide'], function() {
-    gulp.watch(htmlWild, ['html']);
-    gulp.watch(sassWild, ['sass', 'styleguide']);
-    console.log(
-        '\nDeveloper mode!\n\nSC5 Styleguide available at http://localhost:3000/\n'
-    );
+gulp.task('dev', ['html', 'sass', 'styleguide'], function () {
+	gulp.watch(htmlWild, ['html']);
+	gulp.watch(sassWild, ['sass', 'styleguide']);
+	console.log(
+		'\nDeveloper mode!\n\nSC5 Styleguide available at http://localhost:3000/\n'
+	);
 });
 
 // The basic build task
 
-gulp.task('default', ['html', 'sass', 'staticStyleguide'], function() {
-    console.log(
-        '\nBuild complete!\n\nFresh build available in directory: ' +
-        buildPath + '\n\nCheckout the build by commanding\n' +
-        '(cd ' + buildPath + '; python -m SimpleHTTPServer)\n' +
-        'and pointing yout browser at http://localhost:8000/\n' +
-        'or http://localhost:8000/styleguide/ for the styleguide\n\n' +
-        'Run gulp with "gulp dev" for developer mode and style guide!\n'
-    );
+gulp.task('default', ['html', 'sass', 'staticStyleguide'], function () {
+	console.log(
+		'\nBuild complete!\n\nFresh build available in directory: ' +
+		buildPath + '\n\nCheckout the build by commanding\n' +
+		'(cd ' + buildPath + '; python -m SimpleHTTPServer)\n' +
+		'and pointing yout browser at http://localhost:8000/\n' +
+		'or http://localhost:8000/styleguide/ for the styleguide\n\n' +
+		'Run gulp with "gulp dev" for developer mode and style guide!\n'
+	);
 });
-
